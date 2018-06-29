@@ -1,0 +1,23 @@
+<div class="row justify-content-md-center">
+  <div class="col col-md-5">
+    <h3 class="mb-4">
+      Usuário
+      <small class="text-muted">Alterar</small>
+    </h3>
+    <div *ngIf="message" class="alert alert-success" role="alert">
+      {{message}}
+      <a routerLink="/user-list" class="alert-link">
+        Voltar para a lista
+      </a>
+    </div>
+    <div class="card">
+      <div class="card-body">
+        <app-user-form [user]="user$ | async" (save)="save($event)"></app-user-form>
+      </div>
+      <div class="card-footer text-right">
+        <span class="text-muted">Última alteração em:</span>
+        {{(user$ | async)?.alterado_em | date: "dd/MM/yyyy 'às' hh:mm:ss"}}
+      </div>
+    </div>
+  </div>
+</div>

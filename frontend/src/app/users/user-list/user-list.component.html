@@ -1,0 +1,23 @@
+<table class="table table-hover">
+  <thead class="thead-light">
+    <tr>
+      <th>Nome</th>
+      <th class="text-right">Idade</th>
+      <th class="text-right">Desde</th>
+      <th class="text-right">Ativo</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let user of users | async">
+      <td>{{user.nome}}</td>
+      <td class="text-right">{{user.idade}}</td>
+      <td class="text-right">{{user.criado_em | date:"dd/MM/yyyy 'às' hh:mm:ss"}}</td>
+      <td class="text-right">{{user.ativo ? 'Sim' : 'Não'}}</td>
+      <td class="text-right">
+        <button type="button" class="btn btn-sm btn-primary" (click)="edit(user)">Alterar</button>
+        <button type="button" class="btn btn-sm btn-danger" (click)="delete(user)">Apagar</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
